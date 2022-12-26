@@ -1,4 +1,4 @@
-const FetchWeather = (props) => {
+const DisplayWeather = (props) => {
   const { name, weather, main, wind } = props.data;
   const { icon, description } = weather[0];
   const { temp, humidity, feels_like } = main;
@@ -8,7 +8,9 @@ const FetchWeather = (props) => {
     <div id="weather" className="bg-white rounded shadow-md p-6">
       <h3 className="text-xl font-bold text-gray-800">Weather in {name}</h3>
       <h2 className="text-4xl font-bold text-blue-500">{temp}°C</h2>
-      <h4>It feels like {feels_like}°C</h4>
+      <h4 className="text-gray-500 font-semibold text-sm">
+        Feels like {feels_like}°C
+      </h4>
       <div className="text-gray-600 font-semibold">
         <img
           src={`https://openweathermap.org/img/wn/${icon}.png`}
@@ -25,4 +27,4 @@ const FetchWeather = (props) => {
   );
 };
 
-export default FetchWeather;
+export default DisplayWeather;
