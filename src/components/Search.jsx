@@ -3,14 +3,39 @@ import FetchWeather from "./FetchWeather";
 
 function Search() {
   const [searchCity, setSearchCity] = useState("");
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const fetchData = async (searchCity) => {
+    const apiKey = "9f58b3473650597ed51ffb988e8eac5d";
+    try {
+      const response = await fetch(
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+          searchCity +
+          "&units=metric&appid=" +
+          apiKey
+      );
+      if (!response.ok) {
+        console.error("response not ok", response);
+        setError(response.statusText);
+      } else {
+        const data = await response.json();
+        setData(data);
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   const handleChange = (event) => {
+    setError(null);
     setSearchCity(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Search city: ${searchCity}`);
+    setData(null);
+    fetchData(searchCity);
   };
 
   return (
@@ -18,6 +43,7 @@ function Search() {
       <label className="sr-only" htmlFor="search">
         Search city:
       </label>
+
       <input
         type="text"
         id="search"
@@ -41,7 +67,8 @@ function Search() {
           />
         </svg>
       </button>
-      <FetchWeather searchCity={searchCity} />
+      {data && <FetchWeather data={data} />}
+      {error && <p className="font-sans text-red-500">{error}</p>}
     </form>
   );
 }
