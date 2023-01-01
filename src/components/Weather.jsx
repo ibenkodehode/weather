@@ -36,9 +36,7 @@ const DisplayWeather = (props) => {
         </svg>
         {humidity}%
       </div>
-      <div className="text-gray-600 font-semibold">
-        Wind speed: {speed} km/h
-      </div>
+      <div className="text-gray-600 font-semibold">Wind speed: {speed} m/s</div>
     </div>
   );
 };
