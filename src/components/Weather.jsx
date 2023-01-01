@@ -1,3 +1,8 @@
+// Icons
+import { TbWind } from "react-icons/tb";
+import { TbDroplet } from "react-icons/tb";
+import { TbPercentage } from "react-icons/tb";
+
 const DisplayWeather = (props) => {
   const { name, weather, main, wind } = props.data;
   const { icon, description } = weather[0];
@@ -5,38 +10,29 @@ const DisplayWeather = (props) => {
   const { speed } = wind;
 
   return (
-    <div id="weather" className="bg-white rounded shadow-md p-6">
-      <h3 className="text-xl font-bold text-gray-800">{name}</h3>
-      <h2 className="text-4xl font-bold text-blue-500">{temp}°C</h2>
-      <h4 className="text-gray-500 font-semibold text-sm">
+    <div id="weather" className="flex flex-col items-center my-6">
+      <h3 className="font-mono text-l font-bold text-slate-200">{name}</h3>
+      <h2 className=" text-4xl font-bold text-white">{temp}°C</h2>
+      <h6 className="text-blue-200 font-light text-sm">
         Feels like {feels_like}°C
-      </h4>
+      </h6>
       <img
         src={`https://openweathermap.org/img/wn/${icon}.png`}
         className="mx-auto"
         alt={description}
       />
-      <h4 className="text-gray-600 font-semibold text-sm">{description}</h4>
-      <div className="text-gray-600 font-semibold">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-droplet"
-          viewBox="0 0 16 16">
-          <path
-            fill-rule="evenodd"
-            d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"
-          />
-          <path
-            fill-rule="evenodd"
-            d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"
-          />
-        </svg>
-        {humidity}%
-      </div>
-      <div className="text-gray-600 font-semibold">Wind speed: {speed} m/s</div>
+      {/* <h4 className="text-blue-200 font-semibold text-sm">{description}</h4> */}
+      <hr className="mt-6 mb-2 mx-auto w-48 h-px bg-slate-400 rounded border-0 "></hr>
+      <section className="flex flex-row content-between text-sm font-normal ">
+        <h5 className="text-slate-300 flex-col items-center">
+          <TbDroplet className="text-2xl mr-1.5" />
+          {humidity}
+          <TbPercentage />
+        </h5>
+        <h5 className="text-slate-300 flex-col items-center">
+          <TbWind className="mr-1.5 text-2xl" /> {speed} m/s
+        </h5>
+      </section>
     </div>
   );
 };

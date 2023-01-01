@@ -54,7 +54,7 @@ function Search() {
         />
         <button
           type="submit"
-          className="inline-block px-3 py-1.5  bg-blue-50 rounded-r-lg hover:shadow-lg ">
+          className="inline-block px-3 py-1.5  bg-blue-50 rounded-r-lg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
