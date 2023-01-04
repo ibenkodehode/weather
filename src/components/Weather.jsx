@@ -1,7 +1,6 @@
 // Icons
 import { TbWind } from "react-icons/tb";
 import { TbDroplet } from "react-icons/tb";
-import { TbPercentage } from "react-icons/tb";
 
 const DisplayWeather = (props) => {
   const { name, weather, main, wind } = props.data;
