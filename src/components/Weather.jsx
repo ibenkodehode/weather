@@ -10,7 +10,9 @@ const DisplayWeather = (props) => {
   const { speed } = wind;
 
   return (
-    <div id="weather" className="flex flex-col items-center my-6">
+    <div
+      id="weather"
+      className="flex flex-col items-center my-6 	box-sizing: border-box">
       <h3 className="font-mono text-l font-bold text-slate-200">{name}</h3>
       <h2 className=" text-4xl font-bold text-white">{temp}°C</h2>
       <h6 className="text-blue-200 font-light text-sm">
@@ -18,20 +20,16 @@ const DisplayWeather = (props) => {
       </h6>
       <img
         src={`https://openweathermap.org/img/wn/${icon}.png`}
-        className="mx-auto"
+        className="mt-4 mb-2"
         alt={description}
       />
-      {/* <h4 className="text-blue-200 font-semibold text-sm">{description}</h4> */}
-      <hr className="mt-6 mb-2 mx-auto w-48 h-px bg-slate-400 rounded border-0 "></hr>
-      <section className="flex flex-row content-between text-sm font-normal ">
-        <h5 className="text-slate-300 flex-col items-center">
-          <TbDroplet className="text-2xl mr-1.5" />
-          {humidity}
-          <TbPercentage />
-        </h5>
-        <h5 className="text-slate-300 flex-col items-center">
-          <TbWind className="mr-1.5 text-2xl" /> {speed} m/s
-        </h5>
+      <h4 className="text-blue-100 font-semibold text-sm">{description}</h4>
+      <hr className="mt-2 mb-4 w-48 h-px bg-slate-300 rounded border-0 "></hr>
+      <section className="grid grid-cols-2 gap-x-8 text-sm font-normal text-slate-200 justify-items-center">
+        <TbDroplet className="text-2xl mr-1.5" />
+        <TbWind className="mr-1.5 text-2xl" />
+        <h5 className="flex flex-row items-center ">{humidity} %</h5>
+        <h5 className=""> {speed} m/s</h5>
       </section>
     </div>
   );
