@@ -1,5 +1,4 @@
 import Search from "./components/Search";
-import FetchWeather from "./components/FetchWeather";
 
 function App() {
   return (
